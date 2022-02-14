@@ -10,6 +10,31 @@
 
 ## C
 
+### cat
+
+> ```shell
+> cat hello.cpp #查看当前目录下的hello.cpp文件的内容
+> cat -n hello.cpp  #查看当前目录下的hello.cpp文件的内容，并加上行号
+> cat -n hello.cpp | more  #查看当前目录下的hello.cpp文件的内容，并加上行号，more是用来翻页的
+> ```
+
+### cd
+
+> ```shell
+> cd ~  #回到当前用户的目录主目录
+> cd .. #返回当前目录的上一级目录；同理，cd../.. 返回上上级目录
+> ```
+
+### cp
+
+>```shell
+>cp TEXT/temp.txt text/ #拷贝TEXT目录下的temp.txt文件到text/目录下
+>cp -r text/ TEXT/ #递归拷贝text/目录到TEXT/目录下
+>\cp -r text/ TEXT/ #递归拷贝 text/目录 并强制覆盖到TEXT/目录下
+>```
+>
+>
+
 ## D
 
 ## E
@@ -32,14 +57,16 @@ halt #关机
 
 ## L
 
->less
->
+### ls
+
+> ```shell
+> ls -a #显示当前目录所在的文件和目录，包括隐藏的
+> ls -l #以列表的方式显示信息
+> ```
+
+
 
 ## M
-
-### man
-
-功能：获取帮助信息
 
 ```shell
 man ls #获取ls命令的帮助信息
@@ -49,7 +76,32 @@ man ls #获取ls命令的帮助信息
 
 > ```shell
 > mkdir Project #在当前目录下创建Project目录
+> mkdir -p Project/C++ #创建多级目录
 > ```
+
+### more
+
+> ```shell
+> more hello.cpp #查看文件
+> ```
+>
+> | 操作   | 功能说明                        |
+> | ------ | ------------------------------- |
+> | space  | 向下翻一页                      |
+> | Enter  | 向下翻一行                      |
+> | q      | 立刻离开more,不再显示该文件内容 |
+> | Ctrl+F | 向下滚动一屏                    |
+> | Ctrl+B | 返回上一屏                      |
+> | =      | 输出当前行的行号                |
+> | :f     | 输出文件名和当前行的行号        |
+
+### mv
+
+>```shell
+>mv text text0 #重命名当前目录下的text/目录
+>mv text0/ TEXT/ #移动目录
+>```
+>
 
 ## N
 
@@ -57,7 +109,15 @@ man ls #获取ls命令的帮助信息
 
 ## P
 
+```shell
+pwd #显示当前的工作目录的绝对路径
+```
+
+
+
 ## Q
+
+
 
 ## R
 
@@ -65,7 +125,23 @@ man ls #获取ls命令的帮助信息
 reboot #现在重新启动计算机
 ```
 
------
+### rmdir
+
+>```shell
+>rmdir project/ #删除project目录（空）
+>rmdir -p TEXT/text/ #删除多级目录 前提text是空目录
+>```
+
+### rm
+
+> ```shell
+> rm hello.cpp #删除当前目录下的文件
+> rm -r TEXT/text/ #删除TEXT/下的text/目录
+> rm -f TEXT/text.txt #强制删除TEXT/目录下的text.txt文件，不会有提示
+> rm -rf TEXT/ #递归强制删除TEXT目录，其下级目录也跟着删除
+> ```
+
+
 
 ## S
 
@@ -84,6 +160,15 @@ sync #把内存的数据同步到磁盘
 
 
 ## T
+
+### touch
+
+```shell
+touch text.txt #当前目录下创建txt文件
+touch text/text.txt #在已有的目录text/下创建txt文件
+```
+
+
 
 ## U
 
