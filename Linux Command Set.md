@@ -33,6 +33,18 @@
 > cd .. #返回当前目录的上一级目录；同理，cd../.. 返回上上级目录
 > ```
 
+### chgrp
+
+> ```shell
+> chgrp TemporaryUser hello.c #将hello.c文件所属于的组改为TemporaryUser
+> ```
+
+### chown
+
+> ```shell
+> chown zane file/ #更改file的所有者
+> ```
+
 ### cp
 
 >```shell
@@ -119,6 +131,12 @@ halt #关机
 
 ## I
 
+### id
+
+> ```shell
+> id zane #查看用户信息
+> ```
+
 ## J
 
 ## K
@@ -159,9 +177,41 @@ halt #关机
 > ls -a #显示当前目录所在的文件和目录，包括隐藏的
 > ls -l #以列表的方式显示信息
 > ls -lh #显示当前目录下的文件大小
+> ls -ahl #显示当前目录下的文件的所有者和其所在的组
 > ```
 
+### ll
 
+> ```shell
+> ll #查看当前目录下所有的信息
+> ```
+>
+> #### 扩展
+>
+> ```shell
+> #权限信息  文件数/子目录数  文件所属用户  文件所属组  文件大小(k)  文件最后修改时间  名
+> lrwxrwxrwx  1  zane  zane     8  2月 14 14:47  pj -> Project//
+> drwxrwxr-x  3  zane  zane  4096  2月 14 14:15  Project/
+> -rwxrwxr-x  1  zane  zane 17368  2月 14 14:15  hello*
+> -rw-rw-r--  1  zane  zane   194  2月 14 15:41  hello.cpp
+> ```
+>
+> ##### 权限信息 
+>
+> | 位   | 说明                                                         |
+> | ---- | ------------------------------------------------------------ |
+> | 0    | **d,-,l,c,b**  分别表示：目录，文件，快捷方式，字符设备(鼠标)，块设备(硬盘) |
+> | 1~3  | **r,w,x**  该文件所有者对该文件的权限  User                  |
+> | 4~6  | **r,w,x**  该文件所在组对该文件的权限  Group                 |
+> | 7~9  | **r,w,x**  其他用户对该文件的权限         Others             |
+>
+> ##### 权限说明
+>
+> - **r：可读     w：可写可删除     x： 可执行可进入目录**
+>
+> 注意：只有获得文件所在目录的**w**权限才能删除文件
+>
+> 
 
 ## M
 
@@ -294,6 +344,19 @@ touch text/text.txt #在已有的目录text/下创建txt文件
 
 
 ## U
+
+### useradd
+
+> ```shell
+> useradd user1 #添加新用户user1，可能不会创建家目录，同时创建user1组
+> useradd -m user1 #添加新用户user1，并创建家目录user1/ 
+> ```
+
+### usermod
+
+> ```shell
+> usermod -g TemporaryUser user1 #将user1的主要用户组修改为TemporaryUser
+> ```
 
 ## V
 
