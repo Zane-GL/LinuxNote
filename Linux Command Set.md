@@ -37,12 +37,33 @@
 
 > ```shell
 > chgrp TemporaryUser hello.c #将hello.c文件所属于的组改为TemporaryUser
+> chgrp -R zane text/ #修改目录组
 > ```
+
+### chmod
+
+>  修改文件权限，方法一：
+>  ```shell
+>  chmod u=rwx,g=rx,o=rw text.txt #修改text.txt文件的权限，user=rwx，group=r-x，others=rw-
+>  chmod u-x text.txt #取消text.txt文件user的x（可执行）权限
+>  chmod o+x text.txt #添加text.txt文件others的x（可执行）权限 
+>  ```
+>
+>  修改文件权限，方法二：
+>
+>  - 各权限对应的数字：r=4   w=2   x=1
+>
+>  ```shell
+>  chmod 752 text.txt #修改text.txt的权限，user=rwx，group=r-x，others=-w-
+>  ```
+>
+>  注意：u,g,o三部分的权限范围只有：1~7
 
 ### chown
 
 > ```shell
 > chown zane file/ #更改file的所有者
+> chown -R zane text/ #更改目录的所有者
 > ```
 
 ### cp
@@ -352,11 +373,18 @@ touch text/text.txt #在已有的目录text/下创建txt文件
 > useradd -m user1 #添加新用户user1，并创建家目录user1/ 
 > ```
 
+### userdel
+
+> ```shell
+> userdel -r user1 #递归删除用户，包括删除其家目录
+> ```
+
 ### usermod
 
 > ```shell
 > usermod -g TemporaryUser user1 #将user1的主要用户组修改为TemporaryUser
 > ```
+
 
 ## V
 
