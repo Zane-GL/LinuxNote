@@ -2,6 +2,23 @@
 
 ## A
 
+#### at 
+
+- 定时执行任务命令，60秒检测一次任务列表，一般只执行一次
+
+> ```shell
+> at 5pm + 2 days #两天后的五点执行，把date重定向写入text中
+> at> date >> /home/zane/text.txt
+> ```
+>
+> ```shell
+> atq #查看已有的任务
+> ```
+>
+> ```shell
+> atrm 6 #删除编号为6的任务
+> ```
+
 ---
 
 
@@ -194,6 +211,8 @@
 
 ### grep
 
+> - 用于查找文件里符合条件的字符串
+>
 > ```shell
 > grep "cout<<" pj/C++/hello.cpp #查找并显示含有cout的行
 > grep -n "cout<<" pj/C++/hello.cpp #查找并显示含有cout的行，并显示行号
@@ -365,7 +384,29 @@ man ls #获取ls命令的帮助信息
 pwd #显示当前的工作目录的绝对路径
 ```
 
+### ps
 
+> - 查看系统正在执行的进程（运行中的程序）
+>
+> ```shell
+> ps -a #显示当前终端的所有进程信息
+> ps -u #以用户的格式显示进程信息
+> ps -x #显示后台进程运行的参数
+> ps -aux #组合显示
+> ps -aux | grep sshd #结合grep筛选显示出进程名为sshd内容
+> ```
+>
+> - 内容解释
+>
+> ```shell
+> #用户ID  进程id CPU占比 物理内存占比 虚拟，物理内存占比   终端名称   状态   启动时间 运行时间   运行指令
+> USER     PID   %CPU    %MEM          VSZ       RSS      TTY     STAT    START   TIME     COMMAND
+> root     1     0.0     0.4        102148      9108        ?       Ss    20:25   0:01     /sbin/init splash
+> root     2     0.0     0.0             0         0        ?        S    20:25   0:00     [kthreadd]
+> root     3     0.0     0.0             0         0        ?       I<    20:25   0:00     [rcu_gp]
+> ```
+>
+> 
 
 ## Q
 
@@ -441,10 +482,25 @@ sync #把内存的数据同步到磁盘
 
 ### touch
 
-```shell
-touch text.txt #当前目录下创建txt文件
-touch text/text.txt #在已有的目录text/下创建txt文件
-```
+> ```shell
+> touch text.txt #当前目录下创建txt文件
+> touch text/text.txt #在已有的目录text/下创建txt文件
+> ```
+
+### tree
+
+> ```shell
+> tree Project/ #以树状的形式列出Project/目录下的情况
+> ```
+>
+> 如下：
+>
+> ```shell
+> Project/
+> └── C++
+>     ├── hello
+>     └── hello.cpp
+> ```
 
 
 
@@ -580,3 +636,14 @@ g++ hello.cpp -o hello #编译
 > ```shell
 > cal >> /home/mycal.txt #将这个月的日历追加到mycal.txt中
 > ```
+
+## |
+
+> ```shell
+> ls -l Project/ | grep "^d" #列出Project/目录下的目录
+> ls -l /opt | grep "^-" | wc -l #列出/opt目录下的文件个数
+> ls -lR Project/ | grep "^-" | wc -l #列出目录下的文件个数并包括子文件夹里的
+> ls -lR Project/ | grep "^d" | wc -l #列出目录下的目录个数并包括子文件夹里的
+> ```
+>
+> 
