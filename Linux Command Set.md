@@ -265,6 +265,16 @@ halt #关机
 
 ## K
 
+### kill
+
+> - 用于杀死进程
+>
+> ```shell
+> kill 888 #结束PID为888的进程
+> killall gedit #删除所有进程名为gedit的进程（包括其子进程）
+> kill -9 2225 #强制删除PID为2225的进程
+> ```
+
 ## L
 
 ### less
