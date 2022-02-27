@@ -19,10 +19,6 @@
 > atrm 6 #删除编号为6的任务
 > ```
 
----
-
-
-
 ## B
 
 ## C
@@ -464,7 +460,20 @@ reboot #现在重新启动计算机
 sync #把内存的数据同步到磁盘
 ```
 
+### systemctl
 
+> - 系统管理指令，位于/usr/lib/systemd/system下
+>
+> ```shell
+> systemctl list-unit-files | grep sshd #筛选查看sshd服务状态
+> systemctl status sshd #查看sshd的状态
+> systemctl stop sshd #关闭sshd
+> systemctl start sshd #开启sshd 
+> systemctl enable ssh #启动ssh
+> systemctl disenable ssh #关闭ssh
+> systemctl is-active sshd #查看sshd服务是否活跃
+> systemctl is-enabled sshd #查看sshd是否开启
+> ```
 
 ## T
 
