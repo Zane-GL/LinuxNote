@@ -382,7 +382,40 @@ man ls #获取ls命令的帮助信息
 
 ## N
 
+### netstat
+
+> - 用于监控网络状态
+>
+> ```shell
+> netstat -an | more #显示系统网络情况
+> netstat -anp | more #显示系统网络情况，包括PID和进程名（要在root用户下才能显示完全）
+> ```
+>
+> - 显示信息解释
+>
+> ```shell
+> #协议					本地地址				外部地址			状态			PID和进程名
+> Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name 
+> tcp        0      0 192.168.60.128:44360    34.117.237.239:443      ESTABLISHED 4714/firefox        
+> tcp        0      0 192.168.60.128:22       192.168.60.1:57105      ESTABLISHED 12465/sshd: zane [p 
+> ```
+>
+> - Windows与Linux通过sshd通信原理图
+>
+> ```mermaid
+> graph LR
+> Windows-xshell___ --192.168.60.1:57105 ____-->Linux_22__
+> Linux_22__--192.168.60.128:22 ____--> Windows-xshell___
+> ```
+>
+
+
+
 ## O
+
+
+
+
 
 ## P
 
@@ -511,6 +544,26 @@ sync #把内存的数据同步到磁盘
 > touch text.txt #当前目录下创建txt文件
 > touch text/text.txt #在已有的目录text/下创建txt文件
 > ```
+
+### top
+
+> ```
+> top #动态显示进程情况
+> top #
+> ```
+>
+> 交互操作
+>
+> | 操作 | 功能                                |
+> | ---- | ----------------------------------- |
+> | P    | 以CPU使用率排序，默认就是此项       |
+> | M    | 以内存的使用率排序                  |
+> | N    | 以PID排序                           |
+> | u    | 以指定user查看；输入u，再输入用户名 |
+> | k    | 删除指定PID进程；输入k，再输入PID   |
+> | q    | 退出top                             |
+>
+> 
 
 ### tree
 
