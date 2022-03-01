@@ -183,6 +183,12 @@
 > date -s "2022-2-14 15:02:10" #设置系统时间
 > ```
 
+### dpkg
+
+> ```shell
+> dpkg -l | grep firefox #查看已安装的软包firefox的信息
+> ```
+
 ## E
 
 ### echo
