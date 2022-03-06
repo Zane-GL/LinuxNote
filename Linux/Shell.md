@@ -42,30 +42,28 @@
 >   A=100
 >   echo A=$A
 >   echo "A=$A"
->   
+>     
 >   #销毁变量A
 >   unset A
 >   echo A=$A
->   
+>     
 >   #声明静态变量B=2，静态变量不能unset
 >   readonly B=2 
 >   echo "B=$2"
->   
+>     
 >   #将指令返回的结果赋给变量
 >   C=`date`
 >   D=$(date)
 >   echo "C=$C"
 >   echo D=$D
->   
+>     
 >   #多行注释
 >   :<<!
 >   echo $PATH
 >   !
 >   ```
 >
->   
->
-> **注意：**变量定义时**=**两侧不能有空格；可以有字母、数字、下划线，但是不能以数字开头
+>   **注意：**变量定义时**=**两侧不能有空格；可以有字母、数字、下划线，但是不能以数字开头
 
 ### 案例三
 
@@ -147,10 +145,105 @@
 >   RES3=`expr $TEMP \* 4`
 >   echo "temp=$TEMP"
 >   echo "res3=RES3"
->   
+>     
 >   #求出预定义参数二和参数三的和
 >   SUM=$[$1+$2]
 >   echo "sum=$SUM"
 >   ```
 >
->   
+
+### 案例5
+
+**条件判断**
+
+> - **判断语句**
+>
+>   ```shell
+>   -lt #小于
+>   -le #小于等于
+>   -eq #等于
+>   -gt #大于
+>   -ge #大于等于
+>   -ne #不等于
+>   -r #读权限
+>   -w #写权限
+>   -x #执行权限
+>   -f #文件存在并是一个常规文件
+>   -e #文件存在
+>   -d #文件存在并是一个目录
+>   ```
+>
+> - **代码**
+>
+>   ```shell
+>   #!/bin/bash
+>   #判断语句 = 
+>   if [ "ok" = "ok" ]
+>   then
+>           echo "equal"
+>   fi
+>   #判断传入数字大小
+>   if [ $1 -ge 60 ]
+>   then
+>           echo "Passed"
+>   elif [ $1 -lt 60 ]
+>   then
+>           echo "Failed"
+>   fi
+>   #判断文件是否存在
+>   if [ -f /home/zane/Project/Shell/var.sh ]
+>   then
+>           echo "Yes, it exist."
+>   fi
+>   #[ ]内非空即为真
+>   if [ aa ]
+>   then
+>           echo "Yes"
+>   fi
+>   ```
+>
+> - **注意：**[ ]直接要有空格
+
+### 案例6
+
+**case语句**
+
+> ```shell
+> #!/bin/bash
+> #当参数是 1 时输出 a , 2 时输出 b , 其他时输出 other
+> case $1 in
+>         "1")
+>                 echo "a"
+>                 ;;
+>         "2")
+>                 echo "b"
+>                 ;;
+>         *)
+>                 echo "others"
+>                 ;;
+> esac
+> ```
+
+### 案例7
+
+**for语句**
+
+> - 代码
+>
+> ```shell
+> #!/bin/bash
+> #求1+到100的和
+> #for
+> SUM=0
+> for(( i=1;i<=$1;i++ ))
+> do
+>         SUM=$[$SUM+$i]
+> done
+> echo "By For: The sum = $SUM"
+> 
+> #Aalgorithm
+> TEMP=$(((1+$1)*$1))
+> RES=`expr $TEMP / 2`
+> 
+> echo "By Aalgorithm: The sum =$RES"
+> ```
