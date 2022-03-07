@@ -42,21 +42,21 @@
 >   A=100
 >   echo A=$A
 >   echo "A=$A"
->     
+>       
 >   #销毁变量A
 >   unset A
 >   echo A=$A
->     
+>       
 >   #声明静态变量B=2，静态变量不能unset
 >   readonly B=2 
 >   echo "B=$2"
->     
+>       
 >   #将指令返回的结果赋给变量
 >   C=`date`
 >   D=$(date)
 >   echo "C=$C"
 >   echo D=$D
->     
+>       
 >   #多行注释
 >   :<<!
 >   echo $PATH
@@ -145,7 +145,7 @@
 >   RES3=`expr $TEMP \* 4`
 >   echo "temp=$TEMP"
 >   echo "res3=RES3"
->     
+>       
 >   #求出预定义参数二和参数三的和
 >   SUM=$[$1+$2]
 >   echo "sum=$SUM"
@@ -208,21 +208,25 @@
 
 **case语句**
 
-> ```shell
-> #!/bin/bash
-> #当参数是 1 时输出 a , 2 时输出 b , 其他时输出 other
-> case $1 in
->         "1")
->                 echo "a"
->                 ;;
->         "2")
->                 echo "b"
->                 ;;
->         *)
->                 echo "others"
->                 ;;
-> esac
-> ```
+> - 代码
+>
+>   ```shell
+>   #!/bin/bash
+>   #当参数是 1 时输出 a , 2 时输出 b , 其他时输出 other
+>   case $1 in
+>        "1")
+>                echo "a"
+>                ;;
+>        "2")
+>                echo "b"
+>                ;;
+>        *)
+>                echo "others"
+>                ;;
+>   esac
+>   ```
+>
+>   
 
 ### 案例7
 
@@ -230,20 +234,68 @@
 
 > - 代码
 >
-> ```shell
-> #!/bin/bash
-> #求1+到100的和
-> #for
-> SUM=0
-> for(( i=1;i<=$1;i++ ))
-> do
->         SUM=$[$SUM+$i]
-> done
-> echo "By For: The sum = $SUM"
-> 
-> #Aalgorithm
-> TEMP=$(((1+$1)*$1))
-> RES=`expr $TEMP / 2`
-> 
-> echo "By Aalgorithm: The sum =$RES"
-> ```
+>   ```shell
+>   #!/bin/bash
+>   #求1+到100的和
+>   #for
+>   SUM=0
+>   for(( i=1;i<=$1;i++ ))
+>   do
+>           SUM=$[$SUM+$i]
+>   done
+>   echo "By For: The sum = $SUM"
+>   
+>   #Aalgorithm
+>   TEMP=$(((1+$1)*$1))
+>   RES=`expr $TEMP / 2`
+>   
+>   echo "By Aalgorithm: The sum =$RES"
+>   ```
+>
+>   
+>
+
+### 案例8
+
+**while语句**
+
+> - 代码
+>
+>   ```shell
+>   #!/bin/bash
+>   #求1+..+n的值
+>   SUM=0
+>   i=0
+>   while [ $i -le $1 ]
+>   do
+>           SUM=$[$SUM+$i]
+>           i=$[$i+1]
+>   done
+>   echo "SUM=$SUM"
+>   ```
+
+### 案例8
+
+**read语句**
+
+> - 基本语法
+>
+>   read + 选项 + 参数
+>
+>   **选项：**
+>   **p**:指定读取值时的提示符；
+>   **t**:指定读取值时等待的时间（秒），如果没有在指定的时间内输入，就不再等待了
+>   **参数：**
+>   变量：指定读取值的变量名
+>
+> - 代码
+>
+>   ```shell
+>   #!/bin/bash
+>   #读取控制台输入的一个NUM1值
+>   read -p "Please enter a number : " NUM1
+>   echo "Res = $NUM1"
+>   #读取控制台输入的一个值，等待10s
+>   read -t 10 -p "Please enter a var :" VAR
+>   echo "Res = $VAR"
+>   ```
