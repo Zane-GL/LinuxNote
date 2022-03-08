@@ -265,6 +265,12 @@ halt #关机
 
 ## J
 
+### journalctl
+
+> ```shell
+> journalctl | grep sshd #查看关于sshd的内存日志
+> ```
+
 ## K
 
 ### kill
